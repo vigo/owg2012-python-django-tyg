@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block html_title %}Blog Sitesi | {{ POST.title }}{% endblock html_title %}
+
+{% block html_body %}
+    <h1>Detay</h1>
+    {% if POST %}
+        <h2>{{ POST.title }}</h2>
+        <div>{{ POST.body }}</div>
+        <p>
+            <a href="{{ POST.get_absolute_url }}">Permalink</a>
+            <a href="{{ POST.get_absolute_url_users_posts }}">{{ POST.owner.username }}</a>
+        </p>
+    {% endif %}
+{% endblock html_body %}

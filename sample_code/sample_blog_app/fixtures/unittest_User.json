@@ -1,0 +1,74 @@
+[
+    {
+        "pk": 1, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "ali", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-10-08T12:21:45.453Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "1234", 
+            "email": "", 
+            "date_joined": "2012-10-08T12:21:45.453Z"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "veli", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-10-08T12:21:45.453Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "1234", 
+            "email": "", 
+            "date_joined": "2012-10-08T12:21:45.453Z"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "selami", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-10-08T12:21:45.453Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "1234", 
+            "email": "", 
+            "date_joined": "2012-10-08T12:21:45.453Z"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "nuri", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-10-08T12:21:45.453Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "1234", 
+            "email": "", 
+            "date_joined": "2012-10-08T12:21:45.454Z"
+        }
+    }
+]

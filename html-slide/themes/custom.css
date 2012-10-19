@@ -1,0 +1,121 @@
+/* Cover ------------------------------------------------------------------ */
+.cover h2 {
+    color:#FFF;
+    text-align:center;
+    font-size:70px;
+    margin-top: 23%;
+    text-shadow: -1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+
+.cover h3 {
+    text-align:center;
+    color: #eec;
+    text-shadow: -1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+.cover h3 small {
+    display: block;
+    color: #eee;
+    text-shadow: -1px 1px 0px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    line-height: 30px;
+}
+/* Cover ------------------------------------------------------------------ */
+
+
+/* Slide ------------------------------------------------------------------ */
+.slide header {
+    margin-bottom: 38px;
+}
+
+h3 {
+    color: #a55;
+    font-size: 30px;
+}
+
+.shout h2 small {
+    font-size: 50px;
+    display: block;
+    color: #858585;
+}
+/* Slide ------------------------------------------------------------------ */
+
+/* Tag -------------------------------------------------------------------- */
+.tag {
+    background: #77c;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 10px;
+    text-shadow: -1px 1px 0px rgba(0, 0, 128, 0.5);
+    font-family: Menlo;
+}
+
+.red {
+    background: #f00;
+    color: #fff;
+    text-shadow: -1px 1px 0px rgba(128, 0, 0, 0.5);
+}
+
+.green {
+    background: #0f0;
+    color: #000;
+    text-shadow: -1px 1px 0px rgba(0, 128, 0, 0.5);
+}
+
+.blue {
+    background: #00f;
+    color: #fff;
+    text-shadow: -1px 1px 0px rgba(0, 0, 128, 0.5);
+}
+/* Tag -------------------------------------------------------------------- */
+
+/* Code ------------------------------------------------------------------- */
+pre,
+pre code {
+    font-family: Menlo !important;
+}
+.monospace {
+    font-size: 12px;
+    white-space: pre !important;
+}
+/* Code ------------------------------------------------------------------- */
+
+.small16 {
+    font-size: 16px;
+}
+.small18 {
+    font-size: 18px;
+}
+.small20 {
+    font-size: 20px;
+}
+.small22 {
+    font-size: 22px;
+}
+.small24 {
+    font-size: 24px;
+}
+.small26 {
+    font-size: 26px;
+}
+.shallow {
+    margin-bottom: 20px !important;
+}
+/* Syntax ----------------------------------------------------------------- */
+.reserved { color: #f00; }
+.keyword { color: #859900; }
+.var { color: #268ad1; }
+.docstr { color: #0a0 !important; }
+.single-q { color: #00f; }
+/* Syntax ----------------------------------------------------------------- */
+
+
+.listo {
+    
+}
+.listo small {
+    font-size: 16px;
+    display: block;
+}
+.scene {
+    font-family: 'C64 Pro Mono';
+}

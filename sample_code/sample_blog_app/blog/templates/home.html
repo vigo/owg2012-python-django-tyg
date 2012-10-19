@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+
+{% block html_title %}Blog Sitesi{% endblock html_title %}
+
+{% block html_body %}
+    <h1>Postlar</h1>
+    {% if POSTS %}
+        <ul id="posts">
+        {% for POST in POSTS %}
+            <li><a href="{{ POST.get_absolute_url }}">{{ POST.title }}</a> <a href="{{ POST.get_absolute_url_users_posts }}">{{ POST.owner.username }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock html_body %}

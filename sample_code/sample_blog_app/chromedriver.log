@@ -1,0 +1,76 @@
+[0.000][INFO]:      ChromeDriver 23.0.1240.0 /Users/vigo/bin/chromedriver
+[0.987][FINE]:      Initializing session with capabilities {
+   "browserName": "chrome",
+   "chromeOptions": {
+      "args": [  ],
+      "binary": "",
+      "extensions": [  ]
+   },
+   "javascriptEnabled": true,
+   "platform": "ANY",
+   "version": ""
+}
+
+[0.988][INFO]:      Launching chrome: /Applications/Google Chrome.app/Contents/MacOS/Google Chrome --enable-logging --log-level=1 --disable-hang-monitor --disable-prompt-on-repost --dom-automation --full-memory-crash-report --no-default-browser-check --no-first-run --disable-background-networking --disable-sync --disable-translate --disable-web-resources --safebrowsing-disable-auto-update --safebrowsing-disable-download-protection --disable-client-side-phishing-detection --disable-component-update --disable-default-apps --use-mock-keychain --ignore-certificate-errors about:blank
+[1.322][INFO]:      Connected to Chrome successfully. Version: 22.0.1229.79
+[1.326][FINE]:      Command received (/session/bdda91f52d62786b6a3506fa21531e6c)
+[1.326][FINE]:      Command finished (/session/bdda91f52d62786b6a3506fa21531e6c) with response {
+   "sessionId": "bdda91f52d62786b6a3506fa21531e6c",
+   "status": 0,
+   "value": {
+      "acceptSslCerts": false,
+      "applicationCacheEnabled": false,
+      "browserConnectionEnabled": false,
+      "browserName": "chrome",
+      "chrome.chromedriverVersion": "23.0.1240.0",
+      "chrome.nativeEvents": false,
+      "cssSelectorsEnabled": true,
+      "databaseEnabled": false,
+      "handlesAlerts": true,
+      "javascriptEnabled": true,
+      "locationContextEnabled": false,
+      "nativeEvents": true,
+      "platform": "mac",
+      "rotatable": false,
+      "takesScreenshot": true,
+      "version": "22.0.1229.79",
+      "webStorageEnabled": true
+   }
+}
+
+[1.398][FINE]:      Command received (/session/bdda91f52d62786b6a3506fa21531e6c/timeouts/implicit_wait) with params {
+   "ms": 10000.0,
+   "sessionId": "bdda91f52d62786b6a3506fa21531e6c"
+}
+
+[1.398][FINER]:     Waiting for all views to stop loading...
+[1.398][FINER]:     Done waiting for all views to stop loading
+[1.398][FINER]:     Waiting for all views to stop loading...
+[1.398][FINER]:     Done waiting for all views to stop loading
+[1.398][FINE]:      Command finished (/session/bdda91f52d62786b6a3506fa21531e6c/timeouts/implicit_wait) with response {
+   "sessionId": "bdda91f52d62786b6a3506fa21531e6c",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[1.400][FINE]:      Command received (/session/bdda91f52d62786b6a3506fa21531e6c/url) with params {
+   "sessionId": "bdda91f52d62786b6a3506fa21531e6c",
+   "url": "http://localhost:8081/blog/"
+}
+
+[1.400][FINER]:     Waiting for all views to stop loading...
+[1.400][FINER]:     Done waiting for all views to stop loading
+[1.457][FINER]:     Waiting for all views to stop loading...
+[1.458][FINER]:     Done waiting for all views to stop loading
+[1.458][FINE]:      Command finished (/session/bdda91f52d62786b6a3506fa21531e6c/url) with response {
+   "sessionId": "bdda91f52d62786b6a3506fa21531e6c",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[1.460][FINE]:      Command received (/session/bdda91f52d62786b6a3506fa21531e6c)
+[1.499][INFO]:      Chrome shutdown

@@ -1,0 +1,673 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <title>Python ve Django'da Test ile Yürüyen Geliştirme | Uğur Özyılmazel | 20 Ekim 2012</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1274, user-scalable=no">
+    <link rel="stylesheet" href="themes/ribbon/styles/style.css">
+    <link rel="stylesheet" href="themes/custom.css">
+</head>
+<body class="list">
+    <header class="caption">
+        <h1>Özgür Web Günleri 2012</h1>
+        <p>20 Ekim 2012</p>
+    </header>
+    
+    <div class="slide cover w" id="kapak"><div>
+        <section>
+            <header>
+                <h2>Python ve Django&rsquo;da</h2>
+                <h3>&ldquo;Test&rsquo;le Yürüyen Geliştirme&rdquo; <small>Uğur Özyılmazel / 2012</small></h3>
+            </header>
+            <img src="pictures/cover.jpg" alt="">
+        </section>
+    </div></div>
+    
+    <div class="slide" id="ugur-ozyilmazel"><div>
+        <section>
+            <header>
+                <h2>Ben Kimim?</h2>
+            </header>
+            <p class="shallow">Uğur Özyılmazel, <strong>Developer</strong></p>
+            <ul class="listo">
+                <li>Demoscener<small class="scene">C64,AMIGA,BRONX,ZOMBIE BOYS</small></li>
+                <li>Bilgisayar Programcısı<small>assembly, applescript, python, ruby, php, bash, ansi c, js</small></li>
+                <li>Blogger / Podcaster<small>devPod</small></li>
+            </ul>
+        </section>
+    </div></div>
+    
+    <div class="slide" id="tdd-nedir-1"><div>
+        <section>
+            <header>
+                <h2>TDD Nedir?</h2>
+                <h3>Test&rsquo;le Yürüyen Geliştirme</h3>
+            </header>
+            <p class="shallow"><strong>T</strong>est-<strong>d</strong>riven <strong>D</strong>evelopment</p>
+            <ul>
+                <li>1999&rsquo;lardan itibaren başlıyor. <a href="http://en.wikipedia.org/wiki/Test-driven_development" target="_blank">TDD</a>, <a href="http://en.wikipedia.org/wiki/Software_testing" target="_blank">Software Testing</a></li>
+                <li>Önce hayal edilen fonksiyonlar test ortamında çağırılıyor.</li>
+                <li><code>FAIL</code> edenler fonksiyonlar, işlemler yazılmaya başlıyor.</li>
+                <li>Tüm testlerden geçince yazılan kod gerekiyorsa <code>refactor</code> ediliyor.</li>
+                <li><span class="tag">java</span>
+                    <span class="tag">php</span>
+                    <span class="tag">python</span>
+                    <span class="tag">ruby</span>
+                    <span class="tag">js</span>
+                    <span class="tag">objective-c</span>
+                    ...
+                </li>
+            </ul>
+        </section>
+    </div></div>
+    
+    <div class="slide" id="ben-nasil-tanistim"><div>
+        <section>
+            <header>
+                <h2>Ben Nasıl Tanıştım</h2>
+            </header>
+            <ul>
+                <li>Hep şehir efsanesi olmuştur: Adamlar önce test&rsquo;i yazıyorlarmış vay beee!</li>
+                <li><a href="https://class.coursera.org/saas/class/index" target="_blank">Software Engineering for S.A.A.S</a></li>
+                <!-- <li><strong>Ruby</strong> <span class="tag">Unit Test</span> <span class="tag">rspec</span></li> -->
+                <li><strong>Ruby</strong> Standart Library <code>test/unit</code></li>
+            </ul>
+        </section>
+    </div></div>
+    
+    <div class="slide" id="ornek-ruby-unit-test"><div>
+        <section>
+            <header>
+                <h2>İlk Gördüğüm Test</h2>
+            </header>
+            <pre class="small16 shallow">
+                <code><span class="reserved">require</span> '<span class="single-q">test/unit</span>'</code>
+                <code><span class="keyword">class</span> <span class="keyword">TestFunWithStrings</span> < <span class="keyword">Test::Unit::TestCase</span></code>
+                <code>  <span class="keyword">def</span> <span class="var">test_palindrome</span></code>
+                <code>    palindromes = ["Satan Oscillate My Metallic Sonatas", "Ekalaka Lake", ""]</code>
+                <code>    not_palindromes = ["Abracadabra"]</code>
+                <code>    palindromes.each { |<span class="var">pal</span>| assert <span class="var">palindrome</span>?(pal) }</code>
+                <code>    not_palindromes.each { |<span class="var">not_pal</span>| assert !<span class="var">palindrome</span>?(not_pal) }</code>
+                <code>  <span class="keyword">end</span></code>
+            </pre>
+            <pre class="small16">
+                <code><span class="keyword">def</span> <span class="var">palindrome?</span>(string)</code>
+                  <code>  string = string.gsub(<span class="reserved">/\W/</span>, "").downcase</code>
+                  <code>  string == string.reverse</code>
+                <code><span class="keyword">end</span></code>
+            </pre>
+        </section>
+    </div></div>
+
+    <div class="slide" id="ben-nasil-tanistim-02"><div>
+        <section>
+            <header>
+                <h2>Ben Nasıl Tanıştım</h2>
+            </header>
+            <ul>
+                <li>Hep şehir efsanesi olmuştur: Adamlar önce test&rsquo;i yazıyorlarmış vay beee!</li>
+                <li><a href="https://class.coursera.org/saas/class/index" target="_blank">Software Engineering for S.A.A.S</a></li>
+                <li><strong>Ruby</strong> Standart Library <code>test/unit</code></li>
+                <li><span class="tag red">red</span> <span class="tag green">green</span> <span class="tag blue">re-factor</span></li>
+            </ul>
+        </section>
+    </div></div>
+
+
+    <div class="slide cover" id="red-green-refactor-01"><div>
+        <section>
+            <img src="pictures/railscast155-01.png" alt="">
+        </section>
+    </div></div>
+    
+    <div class="slide cover" id="red-green-refactor-02"><div>
+        <section>
+            <img src="pictures/railscast155-02.png" alt="">
+        </section>
+    </div></div>
+    
+    
+    <div class="slide" id="ben-nasil-tanistim-2"><div>
+        <section>
+            <header>
+                <h2>Ben Nasıl Tanıştım</h2>
+            </header>
+            <ul>
+                <li>Hep şehir efsanesi olmuştur: Adamlar önce test&rsquo;i yazıyorlarmış vay beee!</li>
+                <li><a href="https://class.coursera.org/saas/class/index" target="_blank">Software Engineering for S.A.A.S</a></li>
+                <li><strong>Ruby</strong> Standart Library <code>test/unit</code></li>
+                <li><span class="tag red">red</span> <span class="tag green">green</span> <span class="tag blue">re-factor</span></li>
+                <li><strong>Ruby</strong> <code>cucumber</code></li>
+                <li>&ldquo;Debugging sucks Testing rocks!&rdquo;</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="neden-onemli"><div>
+        <section>
+            <header>
+                <h2>Test Yazmanın Önemi</h2>
+            </header>
+            <ul>
+                <li>Zaman kazandırır.</li>
+                <li><strong>Dökümantasyon</strong> oluşmasına yardımcı olur.</li>
+                <li>Ekip olarak yazılım geliştirirken zaman kazandırır.</li>
+                <li>Ana projeyi / fonksiyonaliteyi bozmadan denemeler yapmanızı sağlar.</li>
+                <li>Web uygulaması geliştirirken <strong>browser</strong> bile açmadan çalışmanızı sağlar.</li>
+                <li>Pek çok işlemi otomatize etmenizi sağlar.</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="pythonda-test"><div>
+        <section>
+            <header>
+                <h2>Python&rsquo;da Test</h2>
+            </header>
+            <p>Standart kütüphane içinde Test kütüphanesi de geliyor:</p>
+            <ul>
+                <li>Docstring Test</li>
+                <li>Unit Test</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="pythonda-test-docstring"><div>
+        <section>
+            <header>
+                <h2>Docstring Test</h2>
+                <h3>Doğru Test</h3>
+            </header>
+            <pre class="small16">
+                <code class="comment"># -*- coding: utf-8 -*-</code>
+                <code><span class="reserved">import</span> doctest</code>
+                <code><span class="keyword">def</span> <span class="var">calculator</span>(a, b):</code>
+                <code class="docstr">    &quot;&quot;&quot;</code>
+                <code class="docstr">    &gt;&gt;&gt; x = calculator(3, 5)</code>
+                <code class="docstr">    &gt;&gt;&gt; x</code>
+                <code class="docstr">    8</code>
+                <code class="docstr">    &quot;&quot;&quot;</code>
+                <code>    <span class="keyword">return</span> a + b</code>
+                <code><span class="keyword">if</span> __name__ <span class="keyword">==</span> &quot;<span class="single-q">__main__</span>&quot;:</code>
+                <code>    doctest.testmod()</code>
+            </pre>
+        </section>
+    </div></div>
+    
+    <div class="slide" id="pythonda-test-docstring-error"><div>
+        <section>
+            <header>
+                <h2>Docstring Test</h2>
+                <h3>Hatalı Test</h3>
+            </header>
+            <pre class="small16">
+                <code class="comment"># -*- coding: utf-8 -*-</code>
+                <code><span class="reserved">import</span> doctest</code>
+                <code><span class="keyword">def</span> <span class="var">calculator</span>(a, b):</code>
+                <code class="docstr">    &quot;&quot;&quot;</code>
+                <code class="docstr">    &gt;&gt;&gt; x = calculator(3, 5)</code>
+                <code class="docstr">    &gt;&gt;&gt; x</code>
+                <code class="docstr">    9</code>
+                <code class="docstr">    &quot;&quot;&quot;</code>
+                <code>    <span class="keyword">return</span> a + b</code>
+                <code><span class="keyword">if</span> __name__ <span class="keyword">==</span> &quot;<span class="single-q">__main__</span>&quot;:</code>
+                <code>    doctest.testmod()</code>
+            </pre>
+        </section>
+    </div></div>
+    
+    <div class="slide" id="pythonda-test-docstring-error-ciktisi"><div>
+        <section>
+            <header>
+                <h2>Docstring Test</h2>
+                <h3>Test Çıktı</h3>
+            </header>
+            <pre class="monospace">
+**********************************************************************
+File "..slide_09__docstring_test.py", line 8, in __main__.calculator
+Failed example:
+    x
+<mark>Expected</mark>:
+    9
+<mark>Got</mark>:
+    8
+**********************************************************************
+1 items had failures:
+   1 of   2 in __main__.calculator
+***Test Failed*** 1 failures.
+
+            </pre>
+        </section>
+    </div></div>
+
+    <div class="slide shout" id="pythonda-test-unittest-01"><div>
+        <section>
+            <header>
+                <h2>Unit Test Demo <small>slide_15__unit_test.py</small></h2>
+            </header>
+        </section>
+    </div></div>
+
+    <div class="slide" id="pythonda-test-unittest-02"><div>
+        <section>
+            <header>
+                <h2>Unit Test</h2>
+                <h3>Command-Line&rsquo;dan çalıştırmak</h3>
+            </header>
+            <pre class="small20">
+<code>python slide_15__unit_test.py</code>
+<code>python -m unittest slide_15__unit_test</code>
+<code>python -m unittest slide_15__unit_test.TestCalculator</code>
+<code>python -m unittest slide_15__unit_test.TestCalculator.test_addition</code>
+            </pre>
+        </section>
+    </div></div>
+
+    <div class="slide" id="pythonda-test-unittest-03"><div>
+        <section>
+            <header>
+                <h2>Unit Test / Test Suite</h2>
+                <h3>Metodlar</h3>
+            </header>
+            
+            <ul>
+                <li>setUp, tearDown, setUpClass, tearDownClass</li>
+                <li>run, debug, skipTest</li>
+                <li><strong>@unittest</strong>: skip, skipIf, skipUnless, expectedFailure</li>
+                <li>assertion</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide shout" id="unit-test-decortors-demo"><div>
+        <section>
+            <header>
+                <h2>Demo <small>slide_17__unit_test_decorators.py</small></h2>
+            </header>
+        </section>
+    </div></div>
+    
+
+    <div class="slide" id="pythonda-test-unittest-04-assertion"><div>
+        <section>
+            <header>
+                <h2>Unit Test / Test Suite</h2>
+                <h3 class="subtitle">assertion Örnekleri</h3>
+            </header>
+            <ul class="small24">
+                <li>assert<strong>Equal</strong> (a == b), assert<strong>NotEqual</strong> (a != b)</li>
+                <li>assert<strong>True</strong> (is True), assert<strong>False</strong> (is False)</li>
+                <li>assert<strong>Is</strong> (a is b), assert<strong>IsNot</strong> (a is not b)</li>
+                <li>assert<strong>IsNone</strong> (is None), assert<strong>IsNotNone</strong> (is not None)</li>
+                <li>assert<strong>In</strong> (a in b), assert<strong>NotIn</strong> (a not in b)</li>
+                <li>assert<strong>IsInstance</strong> (isinstance(a, b)), assert<strong>NotIsInstance</strong> (not isinstance(a, b))</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="pythonda-test-kaynaklar"><div>
+        <section>
+            <header>
+                <h2>Kaynaklar</small></h2>
+                <h3 class="subtitle">Standart Kütüphane</h3>
+            </header>
+            <ul>
+                <li><a href="http://docs.python.org/library/doctest.html">http://docs.python.org/library/doctest.html</a></li>
+                <li><a href="http://docs.python.org/library/unittest.html">http://docs.python.org/library/unittest.html</a></li>
+                <li><a href="http://en.wikipedia.org/wiki/Doctest">http://en.wikipedia.org/wiki/Doctest</a></li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide shout" id="djangoda-test"><div>
+        <section>
+            <header>
+                <h2>Django&rsquo;da Test</h2>
+            </header>
+            
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-jacob"><div>
+        <section>
+            <header>
+                <h2>Django ve Test</h2>
+            </header>
+            <blockquote>
+                <p>Testi olmayan kod başından hatalı tasarlanmış demektir.</p>
+            </blockquote>
+            <p><a href="http://jacobian.org/" target="_blank">Jacob Kaplan-Moss</a></p>
+        </section>
+    </div></div>
+
+    <div class="slide" id="tdd-onemi"><div>
+        <section>
+            <header>
+                <h2>Django ve Test</h2>
+                <h3>DjangoCon&rsquo;09 &ldquo;Token Testing Talk&rdquo;</h3>
+            </header>
+            <blockquote>
+                <p>Django bize ilk andan beri hep <strong>test</strong> ortamını sunuyor. <code>startapp</code> dediğimiz andan itibaren 
+                    <code>test.py</code> dosyayı oluşturuluyor ve biz bunu kullanmıyoruz!</p>
+            </blockquote>
+            <p><strong>Eric Holscher</strong>, <a href="http://www.slideshare.net/ericholscher/token-testing-slides" target="_blank">sunum dosyası</a></p>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-ilk-tanisma-01"><div>
+        <section>
+            <header>
+                <h2>Django ve Test</h2>
+                <h3>İlk Tanışma</h3>
+            </header>
+            <ul>
+                <li>Docstring Test</li>
+                <li><strong>Kenneth Love</strong>, &ldquo;Getting Started with Django&rdquo;</li>
+                <li>Podcast: <a href="http://feeds.feedburner.com/gigantuan" target="_blank">http://feeds.feedburner.com/gigantuan</a></li>
+                <li><a href="http://gigantuan.net/" target="_blank">http://gigantuan.net/</a></li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-ilk-tanisma-02"><div>
+        <section>
+            <header>
+                <h2>Django ve Test</h2>
+                <h3>Blog modeli için Docstring Test</h3>
+            </header>
+            <pre class="small22">
+                <code class="comment">&gt;&gt;&gt; b = Blog()</code>
+                <code class="comment">&gt;&gt;&gt; b.name = 'Foo Blog'</code>
+                <code class="comment">&gt;&gt;&gt; b.user = User.objects.create(username='foo', password='test')</code>
+                <code class="comment">&gt;&gt;&gt; b.save()</code>
+                <code class="comment">&gt;&gt;&gt; print b</code>
+                <code class="comment">Foo Blog</code>
+                <code class="comment">&gt;&gt;&gt; print b.user.username</code>
+                <code class="comment">foo</code>
+            </pre>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-uygulama-gelistirme-dongusu"><div>
+        <section>
+            <header>
+                <h2>Django ve Test</h2>
+                <h3>Uygulama Geliştirme Döngüsü</h3>
+            </header>
+            <ul>
+                <li>Model&rsquo;lerin tasarımı</li>
+                <li>URL yapısı tasarımı</li>
+                <li>View&rsquo;ların yazılması</li>
+                <li>Template&rsquo;ların hazırlanması</li>
+                <li>Database <code>python manage.py syncdb</code></li>
+                <li>ve Migration *</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-test-yazmadan-yasananlar-1"><div>
+        <section>
+            <header>
+                <h2>Django ve Test</h2>
+                <h3>TDD&rsquo;siz Geliştirme #1</h3>
+            </header>
+            <p class="shallow">Herhangi birşeyi test etmek için önce</p>
+            <ul class="small22">
+                <li><code>url</code>&rsquo;i belirmek</li>
+                <li>Kabaca bir <code>view</code> yazmak</li>
+                <li>Hatta geçici bir <code>template</code>&rsquo;i render etmek (<em>parametre geçmek vs...</em>)</li>
+                <li>Eğer <strong>database</strong>&rsquo;den belli bir kritere göre sorgu yapacaksak ilgili data&rsquo;ya da ihtiyaç var.</li>
+            </ul>
+        </section>
+    </div></div>
+    
+    <div class="slide" id="djangoda-test-test-yazmadan-yasananlar-2"><div>
+        <section>
+            <header>
+                <h2>Django ve Test</h2>
+                <h3>TDD&rsquo;siz Geliştirme #2</h3>
+            </header>
+            <ul class="small22">
+                <li>Eğer kullandığınız <strong>IDE</strong> size yardımcı olmuyorsa (<em>PyCharm, Vim, Sublime vs...</em>) <strong>syntax hatası</strong> yapabilirsiniz!</li>
+                <li>Browser açık, Reload / Refresh yaptınız, gözle takip ediyorsunuz istediğiniz değişiklik oldu mu?</li>
+                <li>Terminal&rsquo;e de belki <code>print</code> yaptınız <strong>debug</strong> için. (<em>Bu print&rsquo;ler daha sonra Silent Fail olarak canınızı sıkabilir!</em>)</li>
+                <li><code>model</code> yapısına henüz tam karar veremediniz ve değişiklik yapmak istiyorsunuz!</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-test-yazmadan-yasananlar-3"><div>
+        <section>
+            <header>
+                <h2>Django ve Test</h2>
+                <h3>TDD&rsquo;siz Geliştirme #3</h3>
+            </header>
+            <ul class="small22">
+                <li><code>model</code>&rsquo;i değiştirdiniz;</li>
+                <li>Eğer <strong>migration</strong> kullanmıyorsanız ya database&rsquo;i uçuracaksınız ya da elle düzelteceksiniz!</li>
+                <li><strong>migration</strong> var ve sorunsuz olarak değişikliği yaptınız, şimdi tekrar <a href="?full#djangoda-test-test-yazmadan-yasananlar-1">başa dönün</a>...</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-test-turleri"><div>
+        <section>
+            <header>
+                <h2>Django ve Test</h2>
+                <h3>Test Çeşitleri</h3>
+            </header>
+            <ul>
+                <li><strong>Docstring Tests</strong> (<em>Python</em>)<br>
+                    Database ile uğraşmadan hızlıca model&rsquo;i oluşturmak ve test etmek</li>
+                <li><strong>Unit Tests</strong><br>
+                    Küçük parçaları test etmek, model metodları vs...</li>
+                <li><strong>Integration Tests</strong> (- yavaş -)<br>
+                    Tüm sistemin test edilmesi, view&rsquo;ların Selenium&rsquo;la test edilmesi vs...</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-docstring-test-01"><div>
+        <section>
+            <header>
+                <h2>Docstring Test</h2>
+                <h3>Hızla Django Kuruyoruz</h3>
+            </header>
+            <pre>
+                <code>mkvirtualenv docstr-test</code>
+                <code>pip install django</code>
+                <code>django-admin.py startproject sample_blog_app</code>
+                <code>python manage.py startapp blog</code>
+                <code><mark>settings.py</mark>:<br>'ENGINE': 'django.db.backends.sqlite3'<br>INSTALLED_APPS&rsquo;e 'blog', ekle</code>
+            </pre>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-docstring-test-02"><div>
+        <section>
+            <header>
+                <h2>Docstring Test</h2>
+                <h3>Örnek Model</h3>
+            </header>
+            <pre class="small18">
+                <code><span class="keyword">class</span> <span class="var">Post</span>(models.Model):</code>
+                <code class="comment">    &quot;&quot;&quot;Doctest buraya gelecek!&quot;&quot;&quot;</code>
+                <code>    created_at = models.<span class="keyword">DateTimeField</span>(auto_now_add=True)</code>
+                <code>    updated_at = models.<span class="keyword">DateTimeField</span>(auto_now_add=True, auto_now=True)</code>
+                <code>    owner = models.<span class="keyword">ForeignKey</span>(<span class="reserved">User</span>, related_name='posts')</code>
+                <code>    title = models.<span class="keyword">CharField</span>(max_length=255)</code>
+                <code>    body = models.<span class="keyword">TextField</span>()</code>
+                <code><span class="keyword">def</span> <span class="var">__unicode__</span>(self):</code>
+                <code>    <span class="keyword">return</span> <span class="var">self</span>.title</code>
+            </pre>
+        </section>
+    </div></div>
+
+    <div class="slide shout" id="djangoda-test-docstring-test-03"><div>
+        <section>
+            <header>
+                <h2>Demo <small>sample_blog_app/blog/models.py</small></h2>
+            </header>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-docstring-test-04"><div>
+        <section>
+            <header>
+                <h2>Docstring Test</h2>
+                <h3>Sonuç</h3>
+            </header>
+            <strong>Artı</strong>
+            <ul class="shallow small20">
+                <li>Hızlı test yapma imkanı.</li>
+                <li>Database&rsquo;i oluşturmadan şekillendirme, tasarlama imkanı.</li>
+            </ul>
+            <strong>Eksi</strong>
+            <ul class="small20">
+                <li>Neredeyse sadece <strong>model</strong>&rsquo;i test etmek için. Genel anlamda sınırlı.</li>
+                <li>Fixture olayı sıkıntılı.</li>
+                <li>Unicode sorunlu.</li>
+                <li>Python Debugger <strong>PDB</strong> kullanılamıyor.</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-unittest-01"><div>
+        <section>
+            <header>
+                <h2>Unit Test</h2>
+                <h3>Kullanma Amacı</h3>
+            </header>
+            <ul>
+                <li>Server olmadan HTTP Request&rsquo;leri test etmek.</li>
+                <li><strong>View</strong>&rsquo;ları test etmek.</li>
+                <li><strong>Template</strong>&rsquo;ları test etmek.</li>
+                <li><strong>Model</strong>&rsquo;leri ve metodlarını test etmek.</li>
+                <li><strong>Form</strong>&rsquo;ları test etmek.</li>
+                <li>JavaScript, AJAX ve CSS&rsquo;i test etmek.</li>
+                <li>Diğer; Email gönderimi, fileupload, kullanıcı davranışları</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-unittest-02"><div>
+        <section>
+            <header>
+                <h2>Unit Test</h2>
+                <h3>Django&rsquo; ile gelen TestCase</h3>
+            </header>
+            <ul class="small22">
+                <li>Client</li>
+                <li>Response</li>
+                <li>RequestFactory</li>
+                <li>TestCase</li>
+                <li>TransactionTestCase</li>
+                <li>SimpleTestCase</li>
+                <li>Browser Testing</li>
+                <li>Assertions</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide shout" id="djangoda-test-unittest-03"><div>
+        <section>
+            <header>
+                <h2>Demo <small>sample_blog_app/blog/tests.py</small></h2>
+            </header>
+        </section>
+    </div></div>
+
+    <div class="slide" id="djangoda-test-unittest-04"><div>
+        <section>
+            <header>
+                <h2>Unit Test</h2>
+                <h3>Django&rsquo; ile gelen TestCase</h3>
+            </header>
+            <ul>
+                <li>settings(), urls, fixtures</li>
+                <li>assertRaisesMessage, assertFormError, assertRedirects, assertNumQueries, assertHTMLEqual, assertXMLEqual</li>
+                <li>Email (<em>mail.outbox</em>),</li>
+                <li>LiveServerTestCase (<em>selenium</em> - <code>pip install selenium</code>)</li>
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide shout" id="selenium-demo"><div>
+        <section>
+            <header>
+                <h2>Demo <small>selenium / chrome driver</small></h2>
+            </header>
+        </section>
+    </div></div>
+    
+
+    <div class="slide" id="django-test-kutuphaneleri"><div>
+        <section>
+            <header>
+                <h2>Test Araçları / Yardımcıları</h2>
+                <h3>Django</h3>
+            </header>
+            <ul>
+                <li><a href="https://github.com/django/django.git" target="_blank">Django Source / tests</a></li>
+                <li><a href="https://github.com/hjwp/Test-Driven-Django-Tutorial" target="_blank">https://github.com/hjwp/Test-Driven-Django-Tutorial</a></li>
+                <li><a href="https://github.com/jbalogh/django-nose" target="_blank">Django-Nose</a></li>
+                <li><a href="https://github.com/kmike/django-coverage" target="_blank">Django-Coverage</a></li>
+                <li><a href="https://github.com/dnerdy/factory_boy" target="_blank">Factory Boy</a></li>
+                <li><a href="http://www.getwindmill.com/">WindMill</a>, <a href="https://github.com/windmill/windmill" target="_blank">Source</a></li>
+                <li><a href="http://twill.idyll.org/" target="_blank">Twill</a></li>
+                
+            </ul>
+        </section>
+    </div></div>
+
+    <div class="slide" id="python-test-kutuphaneleri"><div>
+        <section>
+            <header>
+                <h2>Test Araçları / Yardımcıları</h2>
+                <h3>Python</h3>
+            </header>
+            <ul>
+                <li><a href="https://github.com/gabrielfalcao/sure" target="_blank">Sure</a> *</li>
+                <li><a href="https://github.com/mdwhatcott/pyspecs" target="_blank">PySpecs</a> *</li>
+                <li><a href="https://nose.readthedocs.org/en/latest/" target="_blank">Nose</a></li>
+                <li><a href="http://python-mock.sourceforge.net" target="_blank">Mock</a></li>
+                <li><a href="http://nedbatchelder.com/code/coverage/" target="_blank">Coverage</a></li>
+                <li><a href="http://lettuce.it" target="_blank">Lettuce</a>, <a href="https://github.com/gabrielfalcao/lettuce" target="_blank">Source</a></li>
+                <li><a href="http://packages.python.org/behave/tutorial.html" target="_blank">Behave</a></li>
+                
+            </ul>
+        </section>
+    </div></div>
+
+
+    <div class="slide" id="bitis-kullandigim-kaynaklar"><div>
+        <section>
+            <header>
+                <h2>Kullandığım Kaynaklar</h2>
+            </header>
+            <p class="shallow"><strong>Shower Presentation Template</strong> Vadim Makeev, Opera Software<br><a href="http://github.com/pepelsbey/shower" target="_blank">github.com/pepelsbey/shower</a></p>
+            <p class="shallow"><strong>Kapak fotoğrafı</strong><br><a href="http://www.flickr.com/photos/vigobronx/6079441746/" target="_blank">http://www.flickr.com/photos/vigobronx/6079441746/</a></p>
+            <p class="shallow"><strong>Railscast&rsquo;den ekran görüntüleri</strong><br><a href="http://railscasts.com/" target="_blank">http://railscasts.com/</a></p>
+        </section>
+    </div></div>
+    
+    <div class="slide" id="bitis-tesekkurler"><div>
+        <section>
+            <header>
+                <h2>Teşekkür Ederim</h2>
+            </header>
+            <p>Sabırla beni dinlediğiniz için teşekkür ederim. Bana ulaşmak isterseniz:</p>
+            <ul>
+                <li><strong>Blog</strong> / <a href="http://ugur.ozyilmazel.com">http://ugur.ozyilmazel.com</a></li>
+                <li><strong>Github</strong> / <a href="http://github.com/vigo">vigo</a></li>
+                <li><strong>Twitter</strong> / <a href="http://twitter.com/vigobronx">@vigobronx</a></li>
+                <li><strong>Twitter</strong> / <a href="http://twitter.com/ugurozyilmazel">@ugurozyilmazel</a></li>
+            </ul>
+        </section>
+    </div></div>
+    
+    <div class="progress"><div></div></div>
+    
+    <script src="scripts/script.js"></script>
+</body>
+</html>
