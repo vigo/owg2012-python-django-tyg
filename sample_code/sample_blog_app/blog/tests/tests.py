@@ -132,7 +132,7 @@ class PostTestCase(TestCase):
             for user in self.users
         ]
     
-    ## TEST = PostTestCase.test_home_view
+## TEST = PostTestCase.test_home_view
     def test_home_view(self):
         # yeni test, bu bakımdan post oluşturmak gerekiyor
         
@@ -175,7 +175,7 @@ class PostTestCase(TestCase):
         # oluşan html içinde 4 adet <li><a href="..." olmalı...
         self.assertContains(response, '<li><a href="/blog/post/', count=4)
     
-    ## TEST = PostTestCase.test_post_detail_view
+## TEST = PostTestCase.test_post_detail_view
     def test_post_detail_view(self):
         # önce url'i kontrol et
         self.assertEqual('/blog/post/1/', reverse("post_detail", args=[1]))
@@ -203,7 +203,7 @@ class PostTestCase(TestCase):
         self.assertContains(response, '<a href="/blog/post/1/">Permalink</a>')
         self.assertContains(response, '<a href="/blog/posts/ali/">ali</a>')
     
-    # TEST = PostTestCase.test_posts_by_user
+## TEST = PostTestCase.test_posts_by_user
     def test_posts_by_user(self):
         # önce url'i kontrol et
         self.assertEqual('/blog/posts/ali/', reverse("posts_by_user", args=[u'ali']))
